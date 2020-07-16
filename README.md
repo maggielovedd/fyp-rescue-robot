@@ -23,7 +23,7 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/logic flow.png" width="500" alt="">
 
 ## Topic and Node list
-<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Topic list.png" width="400" alt=""> <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Node list.png" width="400" alt="">
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Topic list.png" width="350" alt=""> <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Node list.png" width="450" alt="">
 
 ## More info
 Please refer to the pdf file in report folder
