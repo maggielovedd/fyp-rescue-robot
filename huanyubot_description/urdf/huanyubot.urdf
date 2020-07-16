@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<robot name="mbot">
+
+    <link name="base_link">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.09" radius="0.09"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0 0 0.8 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="left_wheel_joint" type="continuous">
+        <origin xyz="-0.04 0.075 -0.035" rpy="1.57 0 0"/>
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="left_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.035" length = "0.026"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="right_wheel_joint" type="continuous">
+        <origin xyz="-0.04 -0.075 -0.035" rpy="1.57 0 0"/>
+        <parent link="base_link"/>
+        <child link="right_wheel_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="right_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.035" length = "0.026"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="front_caster_joint" type="continuous">
+        <origin xyz="0.06 0 -0.05" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="front_caster_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="front_caster_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.015" />
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 0.95"/>
+            </material>
+        </visual>
+    </link>
+
+
+</robot>

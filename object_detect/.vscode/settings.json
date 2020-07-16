@@ -1,0 +1,5 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/media/rick/Seagate Backup Plus Drive/FYP/huanyu/robot_ws/robot_ws/devel/lib/python2.7/dist-packages"
+    ]
+}

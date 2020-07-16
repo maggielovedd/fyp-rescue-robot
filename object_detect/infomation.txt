@@ -1,0 +1,33 @@
+command:
+
+catkin_make
+source devel/setup.sh
+
+cd worksapce
+roscore
+roslaunch usb_cam usb_cam-test.launch
+rosrun object_detection vision.py
+rosrun object_detection go_to_center
+
+rostopic list >> get topic name
+rostopic echo topicname >> check topic info
+
+topics:
+/center_location >> location of object
+/image_rows_and_cols >> rows and cols of image
+/opencv_image >> image processed by opencv
+/image_raw >> original image
+/cmd_vel >> velocity command to nano
+
+check original image: 
+rosrun image_view image_view image:=/usb_cam/image_raw
+or
+rqt_image_view
+
+check opencv_image:
+rosrun image_view image_view image:=/opencv_image
+or 
+rqt_image_view
+
+check connection: rqt_graph
+
