@@ -1,7 +1,7 @@
 # A self-navigatng robot for search and rescue (TBC)
 This project is my final year capstone project - A self-navigating robot for search and rescue. We build a robot in ROS and integrate several functions: self-navigation, object detection and tracking, and an Arduino board to grab simple objects. The final demostration video is shown here: https://youtu.be/2dpzOpEn4hM
 
-## Overview of the projec
+## Overview of the project
 We bought a Nano robot for SLAM from Taobao (https://m.tb.cn/h.VIjRDe7?sm=fc07a3) and then add on other functions. Most of the packages are either provided by the seller or opensource. Our contribution is mainly integrate them to perform a simplified 'rescue mission'. We used gampping for mapping, move_base for navigation and rosserial for linking Arduino with ROS. We intorduces three original nodes: 
 
 * object_detection: object detection is based on color using opencv-python (path:/object detect/src/vision.py)
