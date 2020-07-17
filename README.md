@@ -23,7 +23,7 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/logic flow.png" width="500" alt="">
 
 ## Rqt
-<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/rqt.jpg" width="400" orientation="90" alt="">
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/rqt.png" alt="">
 
 ## Topic and Node list
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Topic list.png" width="400" alt=""> <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Node list.png" width="400" alt="">
