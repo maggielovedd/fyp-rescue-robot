@@ -25,8 +25,22 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 ## Topic and Node list
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Topic list.png" width="400" alt=""> <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Node list.png" width="400" alt="">
 
-## More info
-Please refer to the pdf file in report folder
-
 ## Command
 
+### Step1: Generate a map
+roslaunch huanyu_robot_start Huanyu_robot_start.launch  
+roslaunch huanyu_robot_start gmapping_slam.launch  
+roslaunch turtle_teleop keyboard_teleop.launch  
+rosrun map_server map_saver -f map_name  
+
+### Step2: Rescue robot
+roslaunch huanyu_robot_start Huanyu_robot_start.launch  
+roslaunch huanyu_robot_start navigation.launch  
+roslaunch usb_cam usb_  
+rosrun obect_detect vision.py  
+rosrun object detect go_to_center.py  
+rosrun huanyu_robot_start show_mark.py  
+rosrun rosserial_python serial_node.py /dev/ttyUSB0  
+
+## More info
+Please refer to the pdf file in report folder
