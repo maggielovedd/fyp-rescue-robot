@@ -1,4 +1,4 @@
-# A self-navigatng robot for search and rescue (TBC)
+# A self-navigatng robot for search and rescue
 This project is my final year capstone project - A self-navigating robot for search and rescue. We build a robot in ROS and integrate several functions: self-navigation, object detection and tracking, and an Arduino board to grab simple objects. The final demostration video is shown here: https://youtu.be/2dpzOpEn4hM
 
 ## Overview of the project
@@ -34,13 +34,19 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 roslaunch huanyu_robot_start Huanyu_robot_start.launch  
 roslaunch huanyu_robot_start gmapping_slam.launch  
 roslaunch turtle_teleop keyboard_teleop.launch  
+rviz  
+cd robot_ws/src/hunayu_robot_start/map  >> open terminal  
 rosrun map_server map_saver -f map_name  
 
 ### Step2: Rescue robot
+cd robot_ws/src/huanyu_robot_start/launch
+gedit navigation_slam.launch     >> change map filename
 roslaunch huanyu_robot_start Huanyu_robot_start.launch  
 roslaunch huanyu_robot_start navigation.launch  
-roslaunch usb_cam usb_  
-rosrun obect_detect vision.py  
+rviz  
+roslaunch usb_cam usb_cam-test.launch  
+rqt_image_view  
+rosrun obect_detect vision.py 
 rosrun object detect go_to_center.py  
 rosrun huanyu_robot_start show_mark.py  
 rosrun rosserial_python serial_node.py /dev/ttyUSB0  
