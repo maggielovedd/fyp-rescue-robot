@@ -1,5 +1,5 @@
-# A self-navigatng robot for search and rescue (TBC)
-This project is my final year capstone project - A self-navigating robot for search and rescue. We build a robot in ROS and integrate several functions: self-navigation, object detection and tracking, and an Arduino board to grab simple objects. The final demostration video is shown here: https://youtu.be/2dpzOpEn4hM
+# A self-navigatng robot for search and rescue
+This project is my final year capstone project - A self-navigating robot for search and rescue. We build a robot in ROS and integrate several functions: self-navigation, object detection and tracking, and an Arduino board to grab simple objects. The final demostration video is shown here: https://youtu.be/2dpzOpEn4hM or https://www.bilibili.com/video/BV1fz4y1D72Y/
 
 ## Overview of the project
 We bought a Nano robot for SLAM from Taobao (https://m.tb.cn/h.VIjRDe7?sm=fc07a3) and then add on other functions. Most of the packages are either provided by the seller or opensource. Our contribution is mainly integrate them to perform a simplified 'rescue mission'. We used gampping for mapping, move_base for navigation and rosserial for linking Arduino with ROS. We intorduces three original nodes: 
@@ -34,13 +34,19 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 roslaunch huanyu_robot_start Huanyu_robot_start.launch  
 roslaunch huanyu_robot_start gmapping_slam.launch  
 roslaunch turtle_teleop keyboard_teleop.launch  
+rviz  
+cd robot_ws/src/hunayu_robot_start/map  >> open terminal  
 rosrun map_server map_saver -f map_name  
 
 ### Step2: Rescue robot
+cd robot_ws/src/huanyu_robot_start/launch
+gedit navigation_slam.launch     >> change map filename
 roslaunch huanyu_robot_start Huanyu_robot_start.launch  
 roslaunch huanyu_robot_start navigation.launch  
-roslaunch usb_cam usb_  
-rosrun obect_detect vision.py  
+rviz  
+roslaunch usb_cam usb_cam-test.launch  
+rqt_image_view  
+rosrun obect_detect vision.py 
 rosrun object detect go_to_center.py  
 rosrun huanyu_robot_start show_mark.py  
 rosrun rosserial_python serial_node.py /dev/ttyUSB0  
