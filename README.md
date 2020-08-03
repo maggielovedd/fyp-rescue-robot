@@ -44,7 +44,7 @@ rosrun map_server map_saver -f map_name
 
 ### Step2: Rescue robot
 cd robot_ws/src/huanyu_robot_start/launch
-gedit navigation_slam.launch     >> change map filename
+gedit navigation_slam.launch     >> change map filename  
 roslaunch huanyu_robot_start Huanyu_robot_start.launch  
 roslaunch huanyu_robot_start navigation.launch  
 rviz  
