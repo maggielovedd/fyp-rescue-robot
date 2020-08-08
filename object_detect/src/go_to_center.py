@@ -8,22 +8,29 @@ from geometry_msgs.msg import Point
 from geometry_msgs.msg import Twist
 from move_base_msgs.msg import *
 
+# this node mainly tracking the target by giving vel commands to base
+# it aslo publish to pick up target
+
 # --- Define our Class
 class motion:
 
     def __init__(self):
-        # --- Publisher to velocity info to Nano
+
         # self.image_pub = rospy.Publisher("image_topic", Image, queue_size=1)
-        # --- Subscriber to the center position and image height ana width
+
+        # --- Publisher to velocity info to Nano
         self.vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size=1)
         self.msg = Twist()
         self.grab_pub = rospy.Publisher('grab', Point, queue_size=1)
         self.grab = Point()
         #self.image_sub = rospy.Subscriber('image_rows_and_cols', Point, callback1)
+        # --- Subscriber to the center position and image height ana width
         self.image_sub = rospy.Subscriber('image_rows_and_cols', Point, self.callback1, queue_size=1,buff_size=5242880)
         self.center_sub = rospy.Subscriber('center_location', Point, self.callback2, queue_size=1, buff_size=5242880)
+
+        #linked with navigation, make sure that the robot motion is not drive by this node until object is detected
         self.goal_status_sub = rospy.Subscriber('/move_base/result', MoveBaseActionResult, self.status_callback, queue_size=1, buff_size=5242880)
-        self.grab_finish_sub = rospy.Publisher('grab_finish', Point, self.finish_callback, queue_size=1)
+        self.grab_finish_sub = rospy.Subscriber('grab_finish', Point, self.finish_callback, queue_size=1)
 
     def callback1(self, info):
 
@@ -32,7 +39,7 @@ class motion:
         cols = info.y
         rows = info.x
 
-    def status_callback(self, msg):
+    def status_callback(self, msg)
 
         global status_number
         status_number = msg.status.status
@@ -41,7 +48,9 @@ class motion:
 
         global finish_number
         
-        if finsih.x == 1:
+        if finsih.x == 1: #if the object is successfully grabbed, we will shutdown this node
+        # we will also set vel to 0 to make sure to avoid unwanted motion
+
             finsih_number = 1
 
             self.msg.linear.x = 0
@@ -56,7 +65,8 @@ class motion:
             rospy.loginfo("shut down go to center")
             rospy.signal_shutdown("shut down go to center")
 
-    def callback2(self, center):  # --- Callback2 function
+    def callback2(self, center):  
+        # callback function transfer center position to speed command and publsih to move the base
 
         global rows, cols, status_number, finish_number
 
@@ -77,7 +87,8 @@ class motion:
             rospy.loginfo("shut down go to center")
             rospy.signal_shutdown("shut down go to center")
 
-        if status_number == 3:
+        if status_number == 3:    # if a nav goal is reached or if target is detected:
+        if True:
 
             x = center.x #rows
             y = center.y #cols
@@ -90,6 +101,9 @@ class motion:
             # print('diff_x: ',diff_x,' diff_y: ',diff_y)
             turn = 0.0
             run = 0.01
+
+        # according to the center location, we divide the screen to 9 partitions
+        # and each corresponding to a particular base motion
 
             if  diff_y >= 10 and diff_x >= 10:             #up left
                 turn = 0.01
@@ -117,6 +131,7 @@ class motion:
 
             rate = rospy.Rate(10)
            # rospy.loginfo(self.msg)
+           # publish the velocity
 
             self.msg.linear.x = run
             self.msg.linear.y = float(0.0)
@@ -130,6 +145,8 @@ class motion:
             rate.sleep()
 
             if run == 0 and turn == 0:
+                # this means the target is in goal zone now
+                # we then publish to /grab to pick up the object
                 self.grab.x = 1
                 self.grab.y = 0
                 self.grab_pub.publish(self.grab)

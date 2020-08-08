@@ -9,15 +9,17 @@ import numpy as np
 def nothing(x):
     pass
 
+#trackbar for setting the hsv color boundaries
 cv2.namedWindow("Tracking")
-cv2.createTrackbar("LH", "Tracking", 58, 255, nothing)  # onchange?
+cv2.createTrackbar("LH", "Tracking", 58, 255, nothing) 
 cv2.createTrackbar("LS", "Tracking", 62, 255, nothing)
 cv2.createTrackbar("LV", "Tracking", 68, 255, nothing)
 cv2.createTrackbar("UH", "Tracking", 89, 255, nothing)
 cv2.createTrackbar("US", "Tracking", 213, 255, nothing)
 cv2.createTrackbar("UV", "Tracking", 239, 255, nothing)
 
-capture = cv2.VideoCapture(1)
+# please chage the index if cam is wrong, it would be 0 or 1 or two cam
+capture = cv2.VideoCapture(0)
 
 width = capture.get(cv2.CAP_PROP_FRAME_WIDTH)
 height = capture.get(cv2.CAP_PROP_FRAME_HEIGHT)
