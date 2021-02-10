@@ -14,6 +14,28 @@ We used gampping for mapping, move_base for navigation and rosserial for linking
 
 The alogrithms are simple and basic since we are also ROS beginners. The robot uses Jaston Nano board as the master board and the whole project is built in ROS Melodic.
 
+## Demo
+
+### 1.Navigation
+The user need to set initial position and search points. The robot navigates to each search points using [/move_base](http://wiki.ros.org/move_base) package and search the target along the way. When target is insight (```/find_blue, x=1```), it stops navigation.
+
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/1slam.gif" alt="">
+
+### 2.Object detection and tracking
+Robot starts to approach the target and once it's ready to pick up, it activates the arduino robot arm  (```/grab, x=1```).
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/2objectdetect.gif" alt="">
+
+### 3.Grasp object
+After picking up the target, it judge if the object is successfully grasped by the visual feedback (```/grab_finish, x=1```). If the target is detected at the designated ROI, we assume this pick up task is complete.
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/3grab.gif" alt="">
+
+### 4.Return to origin
+The robot returns to the original position (0) and put down the target (```/grab, x=2```).
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/4return.gif" alt="">
+
+## Project logic
+<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/logic flow.png" width="500" alt="">
+
 ## Project framework
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/project framework.png" width="400" alt=""> <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/rescue robot.png" width="300" alt="">
 
@@ -22,9 +44,6 @@ The alogrithms are simple and basic since we are also ROS beginners. The robot u
 
 ## Design of the workflow and individual function
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/workflow.png" width="450" alt="">  <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/Function.png" width="350" alt=""> 
-
-## Project logic
-<img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/logic flow.png" width="500" alt="">
 
 ## Rqt
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/rqt.png" alt="">
