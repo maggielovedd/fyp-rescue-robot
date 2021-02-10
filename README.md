@@ -14,10 +14,10 @@ We used gampping for mapping, move_base for navigation and rosserial for linking
 
 The alogrithms are simple and basic since we are also ROS beginners. The robot uses Jaston Nano board as the master board and the whole project is built in ROS Melodic.
 
-## Demo
+## Project flow (Demo)
 
 ### 1.Navigation
-The user need to set initial position and search points. The robot navigates to each search points using [/move_base](http://wiki.ros.org/move_base) package and search the target along the way. When target is insight (```/find_blue, x=1```), it stops navigation.
+The user need to set initial position(0) and search points(1,2,3,...). The robot navigates to the search points in order using [/move_base](http://wiki.ros.org/move_base) package and search the target along the way. When target is insight (```/find_blue, x=1```), it stops navigation.
 
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/1slam.gif" alt="">
 
@@ -33,7 +33,7 @@ After picking up the target, it judge if the object is successfully grasped by t
 The robot returns to the original position (0) and put down the target (```/grab, x=2```).
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/4return.gif" alt="">
 
-## Project logic
+### Logic flow
 <img src="https://github.com/maggielovedd/fyp-rescue-robot/blob/master/image/logic flow.png" width="500" alt="">
 
 ## Project framework
